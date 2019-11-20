@@ -2,10 +2,8 @@ package simple;
 
 import java.util.ArrayList;
 
-import static simple.DPUtils.DPutil.dpIndex;
-import static simple.DPUtils.DPutil.dpLaplace;
-
-//import org.apache.commons.math3.distribution.LaplaceDistribution;
+import static Utils.DPutils.dpIndex;
+import static Utils.DPutils.dpLaplace;
 
 /**
  * @author yuyang
@@ -13,12 +11,11 @@ import static simple.DPUtils.DPutil.dpLaplace;
  */
 public class UFDP_Main {
     public static void main(String[] args) {
-        UFTree ufTree = new UFTree(1);                                //期望支持度阈值为1
+        UFTree ufTree = new UFTree(1);
         ArrayList<ArrayList<String>> transactions = ufTree.readBacketFile("D:\\workspece_idea_lunwen_date\\U_data.txt");
-        //ArrayList<ArrayList<String>> transactions = fptree.readVectorFile("D:/workspece_idea_lunwen_date/2.txt", "1");
         ArrayList<String> list = ufTree.UF_growth(transactions, null, 0.0);
 
-        double budget = 10.0 / list.size();
+        double budget = 150.0 / list.size();
         int k = 5;
         ArrayList<String> items = new ArrayList<>();
         ArrayList<Double> exps = new ArrayList<>();
@@ -43,5 +40,8 @@ public class UFDP_Main {
         for (int i = 0; i < listInx.size(); i++) {
             System.out.println(listInx.get(i) + ":" + exps.get(i));
         }
+//        for (int i = 0; i < list.size(); i++) {
+//            System.out.println(list.get(i));
+//        }
     }
 }
